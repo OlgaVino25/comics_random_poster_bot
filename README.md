@@ -28,7 +28,7 @@
 
 Репозиторий принадлежит не вам, поэтому стоит создать свою собственную копию репозитория. Это называется форком. [Как создать форк (вилку)](https://docs.github.com/ru/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo).
 
-3. Установите зависимости
+2. Установите зависимости
 
 **Основные зависимости:**
 - `python-telegram-bot==20.7` - библиотека для разработки Telegram-ботов на языке Python
@@ -42,7 +42,7 @@
 pip install -r requirements.txt
 ```
 
-4. Проверьте установку
+3. Проверьте установку
 ```bash
 python --version  # Должна быть версия Python 3*
 pip list          # Должны отобразиться все зависимости, описанные выше
@@ -74,9 +74,10 @@ python comics_images.py --help
 ```bash
 python publication_tg_bot.py --help
 ```
-
+<img width="1358" height="572" alt="Снимок экрана 2025-08-20 154511" src="https://github.com/user-attachments/assets/ea72a370-e09f-4b4c-88c7-818a67e35d84" />
 
 
 ### Цель проекта
 
 Код написан в образовательных целях на онлайн-курсе для веб-разработчиков [dvmn.org](https://dvmn.org/).
+
