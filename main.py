@@ -30,16 +30,13 @@ def download_image(url, path):
 
 def get_random_comic(folder='comics_images'):
     """Основная функция для получения случайного комикса"""
-    # Получает случайный номер комикса
     latest_num = get_latest_comic_num()
     comic_id = random.randint(1, latest_num)
 
-    # Получает данные комикса
     comic_data = get_comic_data(comic_id)
     image_url = comic_data['img']
     alt_text = comic_data['alt']
 
-    # Формирует путь и скачивает
     file_extension = os.path.splitext(image_url)[1] or '.png'
     filename = f"comic_{comic_id}{file_extension}"
     filepath = os.path.join(os.getcwd(), filename)
@@ -64,6 +61,8 @@ def main():
         print("Ошибка: Не указаны токен или chat_id в переменных окружения")
         return
 
+    image_path = None
+
     try:
         print("Скачиваю случайный комикс...")
         image_path, caption = get_random_comic()
@@ -71,13 +70,13 @@ def main():
         print("Публикую комикс в Telegram...")
         send_to_telegram(image_path, caption, token, chat_id)
 
-        print("Удаляю файл...")
-        os.remove(image_path)
-
-        print("Готово! Комикс опубликован и файл удален.")
-
+        print("Готово! Комикс опубликован.")
     except Exception as e:
         print(f"Ошибка: {e}")
+    finally:
+        if image_path and os.path.exists(image_path):
+            print("Удаляю временный файл...")
+            os.remove(image_path)
 
 
 if __name__ == '__main__':
